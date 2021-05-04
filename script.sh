@@ -1,3 +1,6 @@
+wget https://github.com/openshift/okd/releases/download/4.7.0-0.okd-2021-04-24-103438/openshift-client-linux-4.7.0-0.okd-2021-04-24-103438.tar.gz
+tar -xvf openshift-client-linux-4.7.0-0.okd-2021-04-24-103438.tar.gz -C /usr/bin/ 
+
 (
   set -x; cd "$(mktemp -d)" &&
   OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
@@ -7,3 +10,5 @@
   KREW=./krew-"${OS}_${ARCH}" &&
   "$KREW" install krew
 )
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
